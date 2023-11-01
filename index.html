@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+    <style>
+        
+        h1{
+            text-align: center;
+            
+        }
+        #hr{
+            margin-left: 120px;
+            font-size: 60px;    
+            text-align: center;
+            color: blue;
+            
+        }
+         #min{
+        
+            font-size: 60px;    
+            text-align: center;
+            color: blue;
+            
+        }
+         #sec{
+            
+            font-size: 60px;    
+            text-align: center;
+            color: blue;
+            
+        }
+         #msec{
+            
+            font-size: 60px;    
+            text-align: center;
+            color: blue;
+            
+        }
+        div.container{
+            background-color: rgb(163, 188, 233);
+            height: 300px;
+            width: 450px;
+            margin: auto;
+            margin-top: 120px;
+            border-radius: 20px;
+            box-shadow: 1px 2px 6px 4px rgb(230, 227, 227);
+        }
+        .start{
+            font-size: 40px;
+            background-color: rgb(65, 241, 21);
+            color: black;
+            border-radius: 20px;
+            
+        }
+        .stop{
+            font-size: 40px;
+            background-color: rgb(245, 97, 223);
+            color: black;
+            border-radius: 20px;
+           
+        
+        }
+        .reset{
+            font-size: 40px;
+            background-color: rgba(124, 113, 226, 0.925);
+            color: black;
+            border-radius: 20px;
+        }
+        div.box{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-around;
+            margin-top: 30px;
+
+            }
+    </style>
+</head>
+<body>
+    
+<div class="container">
+<h1>StopWatch</h1>
+<span id="hr">0</span>:
+<span id="min">0</span>:
+<span id="sec">0</span>:
+<span id="msec">0</span>
+<div class="box">
+<button class="start" onclick="start()">Start</button>
+<button class="stop" onclick="stop()">Stop</button>
+<button class="reset" onclick="reset()">Reset</button>
+
+</div>
+
+</div>
+
+
+
+    <script>
+        let msec = 0;
+        let sec = 0;
+        let min = 0;
+        let hr = 0;
+        let call = false;
+
+        document.getElementById("msec").innerText = msec;
+        document.getElementById("sec").innerText = sec;
+        document.getElementById("min").innerText = min;
+        document.getElementById("hr").innerText = hr;
+
+function start(){
+    call = true;
+    timer();
+}
+function stop(){
+    call = false;
+    timer();
+}
+function reset(){
+    location.reload()
+}
+        function timer(){
+            if(call == true){
+                 msec++;
+            document.getElementById("msec").innerText = msec;
+
+            if (msec == 100) {
+                msec = 0;
+                sec++;
+                document.getElementById("sec").innerText = sec;
+
+                if (sec == 59) {
+                    sec = 0;
+                    min++;
+                    document.getElementById("min").innerText = min;
+
+                    if (min == 59) {
+                        min = 0;
+                        hr++;
+                        document.getElementById("hr").innerText = hr;
+                    }
+                }
+            }
+            }
+           
+        }
+
+        setInterval(timer, 1);
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>
